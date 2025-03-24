@@ -1,4 +1,3 @@
-# bootcamp-project-metro-simulation
 # Metro Ağı Simülasyonu
 
 Bu proje, bir metro ağı içindeki istasyonlar arasında en az aktarmalı ve en hızlı rotayı bulmaya yönelik bir Python uygulamasıdır. Uygulama, **BFS (Breadth-First Search)** ve **A* (A-star)** algoritmalarını kullanarak en uygun yolları hesaplar.
