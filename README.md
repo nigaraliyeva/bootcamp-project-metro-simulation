@@ -1,70 +1,61 @@
 # bootcamp-project-metro-simulation
-Metro Ağı Simülasyonu
+# Metro Ağı Simülasyonu
 
-Bu proje, bir metro ağı içindeki istasyonlar arasında en az aktarmalı ve en hızlı rotayı bulmaya yönelik bir Python uygulamasıdır. Uygulama, BFS (Breadth-First Search) ve A (A-star)* algoritmalarını kullanarak en uygun yolları hesaplar.
+Bu proje, bir metro ağı içindeki istasyonlar arasında en az aktarmalı ve en hızlı rotayı bulmaya yönelik bir Python uygulamasıdır. Uygulama, **BFS (Breadth-First Search)** ve **A* (A-star)** algoritmalarını kullanarak en uygun yolları hesaplar.
 
-Kullanılan Teknolojiler ve Kütüphaneler
-
+## Kullanılan Teknolojiler ve Kütüphaneler
 Bu projede aşağıdaki Python kütüphaneleri kullanılmıştır:
+- **collections**: `defaultdict` ve `deque` kullanılarak veri yapıları yönetildi.
+- **heapq**: Öncelikli kuyruk (priority queue) oluşturmak için kullanıldı.
+- **typing**: Tip belirteçleri eklenerek kodun daha okunaklı olması sağlandı.
 
-collections: defaultdict ve deque kullanılarak veri yapıları yönetildi.
+## Algoritmaların Çalışma Mantığı
 
-heapq: Öncelikli kuyruk (priority queue) oluşturmak için kullanıldı.
+### BFS (En Az Aktarmalı Rota)
+- BFS, genişlik öncelikli arama algoritmasıdır.
+- İlk olarak başlangıç istasyonu kuyruğa alınır.
+- Her istasyondan komşularına giderek en kısa (aktarma sayısı açısından) yolu bulur.
+- En kısa yolu bulduğunda algoritma durur ve rota döndürülür.
+- **Avantajı:** En az aktarma sayısı olan yolu garanti eder.
 
-typing: Tip belirteçleri eklenerek kodun daha okunaklı olması sağlandı.
+### A* (En Hızlı Rota)
+- A* algoritması, Dijkstra'ya benzer ancak daha akıllı seçimler yapar.
+- Öncelikli kuyruk (heapq) kullanarak en düşük maliyetli yolu seçer.
+- İstasyonları en kısa sürede ulaşılabilecek şekilde sıralayarak hedefe en hızlı ulaşımı sağlar.
+- **Avantajı:** Süre açısından en optimal rotayı bulur.
 
-Algoritmaların Çalışma Mantığı
-
-BFS (En Az Aktarmalı Rota)
-
-BFS, genişlik öncelikli arama algoritmasıdır.
-
-İlk olarak başlangıç istasyonu kuyruğa alınır.
-
-Her istasyondan komşularına giderek en kısa (aktarma sayısı açısından) yolu bulur.
-
-En kısa yolu bulduğunda algoritma durur ve rota döndürülür.
-
-Avantajı: En az aktarma sayısı olan yolu garanti eder.
-
-A* (En Hızlı Rota)
-
-A* algoritması, Dijkstra'ya benzer ancak daha akıllı seçimler yapar.
-
-Öncelikli kuyruk (heapq) kullanarak en düşük maliyetli yolu seçer.
-
-İstasyonları en kısa sürede ulaşılabilecek şekilde sıralayarak hedefe en hızlı ulaşımı sağlar.
-
-Avantajı: Süre açısından en optimal rotayı bulur.
-
-Örnek Kullanım ve Test Sonuçları
-
+## Örnek Kullanım ve Test Sonuçları
 Aşağıda bazı test senaryoları verilmiştir:
 
-AŞTİ'den OSB'ye En Az Aktarma
+1. **AŞTİ'den OSB'ye En Az Aktarma**
+   ```bash
+   En az aktarmalı rota: AŞTİ -> Kızılay -> Ulus -> Demetevler -> OSB
+   ```
 
-En az aktarmalı rota: AŞTİ -> Kızılay -> Ulus -> Demetevler -> OSB
+2. **AŞTİ'den OSB'ye En Hızlı Rota**
+   ```bash
+   En hızlı rota (15 dakika): AŞTİ -> Kızılay -> Ulus -> Demetevler -> OSB
+   ```
 
-AŞTİ'den OSB'ye En Hızlı Rota
+3. **Batıkent'ten Keçiören'e En Az Aktarma**
+   ```bash
+   En az aktarmalı rota: Batıkent -> Demetevler -> Gar -> Keçiören
+   ```
 
-En hızlı rota (15 dakika): AŞTİ -> Kızılay -> Ulus -> Demetevler -> OSB
+4. **Keçiören'den AŞTİ'ye En Hızlı Rota**
+   ```bash
+   En hızlı rota (14 dakika): Keçiören -> Gar -> Sıhhiye -> Kızılay -> AŞTİ
+   ```
 
-Batıkent'ten Keçiören'e En Az Aktarma
-
-En az aktarmalı rota: Batıkent -> Demetevler -> Gar -> Keçiören
-
-Keçiören'den AŞTİ'ye En Hızlı Rota
-
-En hızlı rota (14 dakika): Keçiören -> Gar -> Sıhhiye -> Kızılay -> AŞTİ
-
-Projeyi Geliştirme Fikirleri
-
+## Projeyi Geliştirme Fikirleri
 Bu projeye eklenebilecek bazı geliştirmeler:
+- **Gerçek zamanlı trafik verisi** eklenerek yoğunluk bazlı optimizasyon yapılabilir.
+- **Farklı hat türleri** (otobüs, tramvay vb.) entegre edilebilir.
+- **Grafik arayüz** eklenerek kullanıcı dostu hale getirilebilir.
+- **Heuristic geliştirme** yapılarak A* algoritması daha verimli hale getirilebilir.
 
-Gerçek zamanlı trafik verisi eklenerek yoğunluk bazlı optimizasyon yapılabilir.
 
-Farklı hat türleri (otobüs, tramvay vb.) entegre edilebilir.
 
-Grafik arayüz eklenerek kullanıcı dostu hale getirilebilir.
+Bu proje, en kısa ve en hızlı metro rotalarını belirlemeye yönelik optimize edilmiş bir algoritma uygulamasıdır. 
 
-Heuristic geliştirme yapılarak A* algoritması daha verimli hale getirilebilir.
+
